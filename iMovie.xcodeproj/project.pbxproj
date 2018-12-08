@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		841090C321BC1F4F009AED9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090C221BC1F4F009AED9E /* AppDelegate.swift */; };
 		841090C521BC1F4F009AED9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090C421BC1F4F009AED9E /* ViewController.swift */; };
-		841090C821BC1F4F009AED9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841090C621BC1F4F009AED9E /* Main.storyboard */; };
 		841090CA21BC1F51009AED9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841090C921BC1F51009AED9E /* Assets.xcassets */; };
 		841090CD21BC1F51009AED9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841090CB21BC1F51009AED9E /* LaunchScreen.storyboard */; };
 		841090D821BC1F51009AED9E /* iMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090D721BC1F51009AED9E /* iMovieTests.swift */; };
 		841090E321BC1F51009AED9E /* iMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090E221BC1F51009AED9E /* iMovieUITests.swift */; };
+		8499AABD21BC366B00373E60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841090C621BC1F4F009AED9E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,9 +229,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8499AABD21BC366B00373E60 /* Main.storyboard in Resources */,
 				841090CD21BC1F51009AED9E /* LaunchScreen.storyboard in Resources */,
 				841090CA21BC1F51009AED9E /* Assets.xcassets in Resources */,
-				841090C821BC1F4F009AED9E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
