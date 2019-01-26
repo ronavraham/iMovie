@@ -51,6 +51,7 @@
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sz5-YO-RSW"/>
+                                    <segue destination="PGA-V3-NLd" kind="showDetail" identifier="loginSeg" id="rF6-zU-W3I"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J97-DJ-Ydm">
@@ -89,10 +90,194 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-2" y="134"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8yl-YL-4ix">
+            <objects>
+                <tabBarController id="PGA-V3-NLd" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="HFo-ry-LHO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="1O4-ul-HAw" kind="relationship" relationship="viewControllers" id="dBo-Uf-Nlc"/>
+                        <segue destination="CyG-UL-gaF" kind="relationship" relationship="viewControllers" id="JYS-SC-XiE"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="quT-Yu-Swu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="897" y="134"/>
+        </scene>
+        <!--Recent Movies-->
+        <scene sceneID="bD7-1x-Qof">
+            <objects>
+                <tableViewController id="auj-sr-gWh" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="PoP-Kj-gZm" userLabel="Table Info Movies">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="129" id="cjt-3V-0rF" userLabel="Table Movie Cell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="129"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cjt-3V-0rF" id="bnw-fM-nLl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="128.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="zME-M9-Wg4" kind="show" id="dGx-6M-joW"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="auj-sr-gWh" id="txA-ap-tTB"/>
+                            <outlet property="delegate" destination="auj-sr-gWh" id="ilT-1Y-ykA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Recent Movies" id="ExX-MA-jOp">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="ZQl-Zk-vrU">
+                            <connections>
+                                <segue destination="3eE-6u-2UE" kind="show" identifier="newMovie" id="Skg-Tw-J7i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJH-pi-z4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2741.5999999999999" y="-153.37331334332833"/>
+        </scene>
+        <!--New Movie-->
+        <scene sceneID="i67-5Z-xbG">
+            <objects>
+                <viewController title="New Movie" id="3eE-6u-2UE" userLabel="New Movie" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6gU-g4-ISe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="V08-qp-eYP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IOm-32-Ahs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3540" y="-461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mnK-tP-x0o">
+            <objects>
+                <navigationController id="1O4-ul-HAw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="mostRecent" id="nHX-24-gOa"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ubz-Qa-lCx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="auj-sr-gWh" kind="relationship" relationship="rootViewController" id="JRu-p5-nM8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yng-dP-4Z3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="-153"/>
+        </scene>
+        <!--Search Movies-->
+        <scene sceneID="izi-RA-Ak7">
+            <objects>
+                <tableViewController id="1sN-eo-0r3" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RLp-jD-s49">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GYu-Ri-9M5">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GYu-Ri-9M5" id="cTb-aN-mAg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="zME-M9-Wg4" kind="show" id="NdZ-tj-MxR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1sN-eo-0r3" id="aRd-Er-p6s"/>
+                            <outlet property="delegate" destination="1sN-eo-0r3" id="1BB-z8-6T3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Search Movies" id="PF4-HP-Ryx"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qo9-cr-zSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="587"/>
+        </scene>
+        <!--Edit movie-->
+        <scene sceneID="pMY-N9-rTk">
+            <objects>
+                <viewController id="KE5-2f-mcl" userLabel="Edit movie" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0JU-ju-imh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BIo-pf-xIZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTD-jk-sql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4495" y="315"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kmk-Gm-YmO">
+            <objects>
+                <navigationController id="CyG-UL-gaF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="Xqb-tt-pmw"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ISH-7k-gl3">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1sN-eo-0r3" kind="relationship" relationship="rootViewController" id="0TL-8w-gqB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pCE-uf-blA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="587"/>
+        </scene>
+        <!--Movie Details-->
+        <scene sceneID="jKY-gg-Nx9">
+            <objects>
+                <viewController id="zME-M9-Wg4" userLabel="Movie Details" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ivk-Jg-Zvn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w4g-Wf-R40">
+                                <rect key="frame" x="0.0" y="440" width="375" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="WEa-4N-Zme"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Movie Details" id="gYp-mm-69H">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="lDi-3J-z5x">
+                            <connections>
+                                <segue destination="KE5-2f-mcl" kind="show" id="F8j-Hh-eLN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svy-1h-98g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3540" y="381.85907046476763"/>
         </scene>
     </scenes>
     <resources>
         <image name="video" width="485" height="485"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NdZ-tj-MxR"/>
+    </inferredMetricsTieBreakers>
 </document>
