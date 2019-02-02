@@ -34,7 +34,7 @@ class ViewController: UIViewController {
                     self.Spinner.isHidden = true
                     if user != nil {
                         self.model.initRefs()
-                        self.performSegue(withIdentifier: "loginToApp", sender: self)
+                        self.performSegue(withIdentifier: "loginSeg", sender: self)
                     } else {
                         self.openMessageBox(title: "Failed", message: "login failed")
                     }
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
                         self.Spinner.isHidden = true
                         if user != nil {
                             self.model.initRefs()
-                            self.performSegue(withIdentifier: "loginToApp", sender: self)
+                            self.performSegue(withIdentifier: "loginSeg", sender: self)
                         } else {
                             self.openMessageBox(title: "Failed", message: "registaration failed")
                         }
