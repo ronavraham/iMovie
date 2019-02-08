@@ -20,6 +20,10 @@
 		84AEA46621FCBFAC0014ED98 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AEA46521FCBFAC0014ED98 /* Movie.swift */; };
 		84AEA46821FCC00B0014ED98 /* MovieRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AEA46721FCC00B0014ED98 /* MovieRowCell.swift */; };
 		84AEA46A21FCC13F0014ED98 /* MovieTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AEA46921FCC13F0014ED98 /* MovieTableViewController.swift */; };
+		84E1657E220DA32300B83EC0 /* CommentRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1657D220DA32300B83EC0 /* CommentRowCell.swift */; };
+		84E16580220DA55D00B83EC0 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1657F220DA55D00B83EC0 /* Comment.swift */; };
+		84E16582220DAF0800B83EC0 /* EditMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16581220DAF0800B83EC0 /* EditMovieViewController.swift */; };
+		84E16584220DBA5100B83EC0 /* SearchMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16583220DBA5100B83EC0 /* SearchMoviesTableViewController.swift */; };
 		84FAF62B21FC679F0051C565 /* FireBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAF62A21FC679F0051C565 /* FireBaseModel.swift */; };
 		E09A7C1033F5A4C529EC838B /* Pods_iMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065B5C72F85397DCDAB95B30 /* Pods_iMovie.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +67,10 @@
 		84AEA46521FCBFAC0014ED98 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		84AEA46721FCC00B0014ED98 /* MovieRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowCell.swift; sourceTree = "<group>"; };
 		84AEA46921FCC13F0014ED98 /* MovieTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewController.swift; sourceTree = "<group>"; };
+		84E1657D220DA32300B83EC0 /* CommentRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRowCell.swift; sourceTree = "<group>"; };
+		84E1657F220DA55D00B83EC0 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		84E16581220DAF0800B83EC0 /* EditMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMovieViewController.swift; sourceTree = "<group>"; };
+		84E16583220DBA5100B83EC0 /* SearchMoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesTableViewController.swift; sourceTree = "<group>"; };
 		84FAF62A21FC679F0051C565 /* FireBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseModel.swift; sourceTree = "<group>"; };
 		F4729A60EB547B01216CFC43 /* Pods-iMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMovie/Pods-iMovie.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				84AEA46721FCC00B0014ED98 /* MovieRowCell.swift */,
+				84E1657D220DA32300B83EC0 /* CommentRowCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +173,8 @@
 				84AEA46921FCC13F0014ED98 /* MovieTableViewController.swift */,
 				840B625E2205B2B300F0A156 /* NewMovieViewController.swift */,
 				840B62602205F2F300F0A156 /* MovieDetailsViewController.swift */,
+				84E16581220DAF0800B83EC0 /* EditMovieViewController.swift */,
+				84E16583220DBA5100B83EC0 /* SearchMoviesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,6 +184,7 @@
 			children = (
 				84AEA46521FCBFAC0014ED98 /* Movie.swift */,
 				84FAF62A21FC679F0051C565 /* FireBaseModel.swift */,
+				84E1657F220DA55D00B83EC0 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -381,13 +393,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E16584220DBA5100B83EC0 /* SearchMoviesTableViewController.swift in Sources */,
 				840B62612205F2F300F0A156 /* MovieDetailsViewController.swift in Sources */,
 				84AEA46821FCC00B0014ED98 /* MovieRowCell.swift in Sources */,
 				841090C521BC1F4F009AED9E /* ViewController.swift in Sources */,
 				84AEA46A21FCC13F0014ED98 /* MovieTableViewController.swift in Sources */,
+				84E1657E220DA32300B83EC0 /* CommentRowCell.swift in Sources */,
+				84E16580220DA55D00B83EC0 /* Comment.swift in Sources */,
 				841090C321BC1F4F009AED9E /* AppDelegate.swift in Sources */,
 				84AEA46621FCBFAC0014ED98 /* Movie.swift in Sources */,
 				840B625F2205B2B300F0A156 /* NewMovieViewController.swift in Sources */,
+				84E16582220DAF0800B83EC0 /* EditMovieViewController.swift in Sources */,
 				84FAF62B21FC679F0051C565 /* FireBaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

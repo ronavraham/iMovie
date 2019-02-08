@@ -67,8 +67,8 @@ class NewMovieViewController: UIViewController, UIImagePickerControllerDelegate,
         
         let grade = Int(GradeInput.text!)!
         if grade < 0 || grade > 10 {
-            let alert = UIAlertController(title: "Incorrect score",
-                                          message: "score has to be between 0 and 10",
+            let alert = UIAlertController(title: "Incorrect grade",
+                                          message: "grade has to be between 0 and 10",
                                           preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

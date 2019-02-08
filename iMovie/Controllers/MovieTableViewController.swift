@@ -13,7 +13,7 @@ class MovieTableViewController: UITableViewController {
     var data: [Movie] = []
     var imageData: [String:UIImage] = [:]
     let model: FireBaseModel = FireBaseModel.getInstance()
-    let numberOfRecentGames:UInt = 20
+    let numberOfRecentMovies:UInt = 20
     var selctedRow:Int?
     
     @IBOutlet var moviesTable: UITableView!
@@ -24,6 +24,7 @@ class MovieTableViewController: UITableViewController {
         super.viewDidLoad()
         self.spinner.stopAnimating()
         self.spinner.isHidden = true
+        self.addObservers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,9 +57,9 @@ class MovieTableViewController: UITableViewController {
         self.newBarButton.isEnabled = false
         if (segue.identifier == "showDetails"){
            let movieViewController : MovieDetailsViewController = segue.destination as! MovieDetailsViewController
-           // let content = data[selctedRow!];
-            //movieViewController.game = content
-            //movieViewController.image = self.imageData[content.id]
+           let content = data[selctedRow!];
+           movieViewController.movie = content
+           movieViewController.image = self.imageData[content.id]
         }
     }
     
@@ -67,8 +68,68 @@ class MovieTableViewController: UITableViewController {
         performSegue(withIdentifier: "showDetails", sender: self)
     }
     
-    @IBAction func unwinedToGameTable(segue: UIStoryboardSegue) {
+    @IBAction func unwinedToMovieTable(segue: UIStoryboardSegue) {
         
+    }
+    
+    private func addObservers() {
+        model.ref!.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childAdded, with: { (snapshot) in
+            self.spinner.isHidden = false
+            self.spinner.startAnimating()
+            if let value = snapshot.value as? [String:Any] {
+                let movie = Movie(movieJson: value)
+                self.model.downloadImage(name: movie.id, callback: {(image) in
+                    self.imageData[movie.id] = image
+                    self.data.insert(movie, at: 0)
+                    self.moviesTable.insertRows(at: [IndexPath(row: 0, section: 0)],
+                                                with: UITableView.RowAnimation.automatic)
+                    self.spinner.stopAnimating()
+                    self.spinner.isHidden = true
+                })
+            }
+        })
+        
+        model.ref!.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childRemoved, with: { (snapshot) in
+            if let value = snapshot.value as? [String:Any] {
+                let movie = Movie(movieJson: value)
+                if self.imageData.keys.contains(movie.id) {
+                    self.imageData.removeValue(forKey: movie.id)
+                }
+                
+                let index = self.data.index(where: { (curr) -> Bool in
+                    return curr.id == movie.id
+                })
+                
+                if index != nil {
+                    self.data.remove(at: index!)
+                    self.moviesTable.deleteRows(at: [IndexPath(row: index!, section: 0)],
+                                                   with: UITableView.RowAnimation.automatic)
+                }
+            }
+        })
+        
+        model.ref!.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childChanged, with: { (snapshot) in
+            self.spinner.isHidden = false
+            self.spinner.startAnimating()
+            if let value = snapshot.value as? [String:Any] {
+                let movie = Movie(movieJson: value)
+                self.model.downloadImage(name: movie.id, callback: {(image) in
+                    let index = self.data.index(where: { (curr) -> Bool in
+                        return curr.id == movie.id
+                    })
+                    
+                    if index != nil {
+                        self.imageData[movie.id] = image
+                        self.data[index!] = movie
+                        self.moviesTable.reloadRows(at: [IndexPath(row: index!, section: 0)],
+                                                    with: UITableView.RowAnimation.automatic)
+                    }
+                    
+                    self.spinner.stopAnimating()
+                    self.spinner.isHidden = true
+                })
+            }
+        })
     }
 
 }
