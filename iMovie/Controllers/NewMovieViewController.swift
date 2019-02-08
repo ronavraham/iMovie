@@ -77,16 +77,20 @@ class NewMovieViewController: UIViewController, UIImagePickerControllerDelegate,
         
         self.spinner.isHidden = false
         self.spinner.startAnimating()
-        
         let key: String! = model.getAutoKey(table: "Movies")
         
-        let newMovie: Movie = Movie(id:key,
-                                 name:self.NameInput.text!,
-                                 description:self.DescriptionInput.text!,
-                                 grade: grade,
-                                 genre: self.GenreInput.text!);
-        
         model.saveImageToFirebase(image:self.ImageInput.image!, name: key ,callback: { (url) in
+            let strUrl:String;
+            if url != nil{
+                strUrl = url!
+            }
+            else { strUrl = "" }
+            let newMovie: Movie = Movie(id:key,
+                                        name:self.NameInput.text!,
+                                        description:self.DescriptionInput.text!,
+                                        grade: grade,
+                                        genre: self.GenreInput.text!,
+                                        url:strUrl);
             self.model.addItemToTable(table: "Movies", key: key, value: newMovie.toJson())
             self.spinner.stopAnimating()
             self.spinner.isHidden = true

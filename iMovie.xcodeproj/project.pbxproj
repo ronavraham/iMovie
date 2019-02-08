@@ -10,6 +10,9 @@
 		840B625F2205B2B300F0A156 /* NewMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B625E2205B2B300F0A156 /* NewMovieViewController.swift */; };
 		840B62612205F2F300F0A156 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840B62602205F2F300F0A156 /* MovieDetailsViewController.swift */; };
 		840B62632205F81400F0A156 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840B62622205F81400F0A156 /* GoogleService-Info.plist */; };
+		841007DE220E1B4800541C9C /* LastUpdateDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007DD220E1B4800541C9C /* LastUpdateDates.swift */; };
+		841007E1220E1D9D00541C9C /* MovieSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007E0220E1D9D00541C9C /* MovieSQL.swift */; };
+		841007E5220E213100541C9C /* LocalSQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007E4220E213100541C9C /* LocalSQLManager.swift */; };
 		841090C321BC1F4F009AED9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090C221BC1F4F009AED9E /* AppDelegate.swift */; };
 		841090C521BC1F4F009AED9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090C421BC1F4F009AED9E /* ViewController.swift */; };
 		841090CA21BC1F51009AED9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841090C921BC1F51009AED9E /* Assets.xcassets */; };
@@ -24,7 +27,7 @@
 		84E16580220DA55D00B83EC0 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E1657F220DA55D00B83EC0 /* Comment.swift */; };
 		84E16582220DAF0800B83EC0 /* EditMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16581220DAF0800B83EC0 /* EditMovieViewController.swift */; };
 		84E16584220DBA5100B83EC0 /* SearchMoviesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E16583220DBA5100B83EC0 /* SearchMoviesTableViewController.swift */; };
-		84FAF62B21FC679F0051C565 /* FireBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAF62A21FC679F0051C565 /* FireBaseModel.swift */; };
+		84FAF62B21FC679F0051C565 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FAF62A21FC679F0051C565 /* FireBaseManager.swift */; };
 		E09A7C1033F5A4C529EC838B /* Pods_iMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 065B5C72F85397DCDAB95B30 /* Pods_iMovie.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,10 @@
 		840B625E2205B2B300F0A156 /* NewMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMovieViewController.swift; sourceTree = "<group>"; };
 		840B62602205F2F300F0A156 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		840B62622205F81400F0A156 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		841007DD220E1B4800541C9C /* LastUpdateDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastUpdateDates.swift; sourceTree = "<group>"; };
+		841007DF220E1C4B00541C9C /* iMovie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iMovie-Bridging-Header.h"; sourceTree = "<group>"; };
+		841007E0220E1D9D00541C9C /* MovieSQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSQL.swift; sourceTree = "<group>"; };
+		841007E4220E213100541C9C /* LocalSQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSQLManager.swift; sourceTree = "<group>"; };
 		841090BF21BC1F4F009AED9E /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841090C221BC1F4F009AED9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841090C421BC1F4F009AED9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +78,7 @@
 		84E1657F220DA55D00B83EC0 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		84E16581220DAF0800B83EC0 /* EditMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMovieViewController.swift; sourceTree = "<group>"; };
 		84E16583220DBA5100B83EC0 /* SearchMoviesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesTableViewController.swift; sourceTree = "<group>"; };
-		84FAF62A21FC679F0051C565 /* FireBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseModel.swift; sourceTree = "<group>"; };
+		84FAF62A21FC679F0051C565 /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
 		F4729A60EB547B01216CFC43 /* Pods-iMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iMovie.release.xcconfig"; path = "Pods/Target Support Files/Pods-iMovie/Pods-iMovie.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,6 +108,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		841007E2220E20FA00541C9C /* SQLModels */ = {
+			isa = PBXGroup;
+			children = (
+				841007DD220E1B4800541C9C /* LastUpdateDates.swift */,
+				841007E0220E1D9D00541C9C /* MovieSQL.swift */,
+			);
+			path = SQLModels;
+			sourceTree = "<group>";
+		};
+		841007E3220E211600541C9C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84FAF62A21FC679F0051C565 /* FireBaseManager.swift */,
+				841007E4220E213100541C9C /* LocalSQLManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		841090B621BC1F4F009AED9E = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +151,8 @@
 		841090C121BC1F4F009AED9E /* iMovie */ = {
 			isa = PBXGroup;
 			children = (
+				841007E3220E211600541C9C /* Managers */,
+				841007E2220E20FA00541C9C /* SQLModels */,
 				840B62622205F81400F0A156 /* GoogleService-Info.plist */,
 				84AEA46421FCBF8F0014ED98 /* Controllers */,
 				84AEA46321FCBF7C0014ED98 /* Views */,
@@ -136,6 +163,7 @@
 				841090C921BC1F51009AED9E /* Assets.xcassets */,
 				841090CB21BC1F51009AED9E /* LaunchScreen.storyboard */,
 				841090CE21BC1F51009AED9E /* Info.plist */,
+				841007DF220E1C4B00541C9C /* iMovie-Bridging-Header.h */,
 			);
 			path = iMovie;
 			sourceTree = "<group>";
@@ -183,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				84AEA46521FCBFAC0014ED98 /* Movie.swift */,
-				84FAF62A21FC679F0051C565 /* FireBaseModel.swift */,
 				84E1657F220DA55D00B83EC0 /* Comment.swift */,
 			);
 			path = Models;
@@ -395,6 +422,7 @@
 			files = (
 				84E16584220DBA5100B83EC0 /* SearchMoviesTableViewController.swift in Sources */,
 				840B62612205F2F300F0A156 /* MovieDetailsViewController.swift in Sources */,
+				841007E5220E213100541C9C /* LocalSQLManager.swift in Sources */,
 				84AEA46821FCC00B0014ED98 /* MovieRowCell.swift in Sources */,
 				841090C521BC1F4F009AED9E /* ViewController.swift in Sources */,
 				84AEA46A21FCC13F0014ED98 /* MovieTableViewController.swift in Sources */,
@@ -404,7 +432,9 @@
 				84AEA46621FCBFAC0014ED98 /* Movie.swift in Sources */,
 				840B625F2205B2B300F0A156 /* NewMovieViewController.swift in Sources */,
 				84E16582220DAF0800B83EC0 /* EditMovieViewController.swift in Sources */,
-				84FAF62B21FC679F0051C565 /* FireBaseModel.swift in Sources */,
+				841007E1220E1D9D00541C9C /* MovieSQL.swift in Sources */,
+				84FAF62B21FC679F0051C565 /* FireBaseManager.swift in Sources */,
+				841007DE220E1B4800541C9C /* LastUpdateDates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +618,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ron.iMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iMovie/iMovie-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -606,6 +637,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ron.iMovie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iMovie/iMovie-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
