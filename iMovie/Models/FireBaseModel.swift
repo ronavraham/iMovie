@@ -81,7 +81,13 @@ class FireBaseModel {
                 if (error != nil) {
                     callback(nil)
                 } else {
-                   self.storageRef?.downloadURL { url, error in callback(url?.absoluteString) }
+                   filesRef.downloadURL { url, error in
+                    guard let downloadURL = url else {
+                        // Uh-oh, an error occurred!
+                        return
+                    }
+                    callback(downloadURL.absoluteString)
+                    }
                 }
             }
         }

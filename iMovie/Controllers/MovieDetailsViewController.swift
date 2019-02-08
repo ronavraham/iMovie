@@ -16,7 +16,7 @@ class MovieDetailsViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:CommentRowCell = tableView.dequeueReusableCell(withIdentifier: "comment_row_cell", for: indexPath) as! CommentRowCell
+        let cell:CommentRowCell = tableView.dequeueReusableCell(withIdentifier: "CommentRowCell", for: indexPath) as! CommentRowCell
         
         let content = data[indexPath.row]
         
@@ -80,7 +80,7 @@ class MovieDetailsViewController: UIViewController, UITableViewDataSource, UITab
             movieGrade.text = String(movie.grade)
             self.movieId = movie.id
             
-            model.ref!.child("Movie/\(movieId!)/Comments").observe(.childAdded, with: { (snapshot) in
+            model.ref!.child("Movies/\(movieId!)/Comments").observe(.childAdded, with: { (snapshot) in
                 if let value = snapshot.value as? [String:Any] {
                     let comment = Comment(commentJson: value)
                     self.data.insert(comment, at: 0)

@@ -65,12 +65,6 @@ class EditMovieViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
-        self.movieImage.image = image
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func imageClick(_ sender: UITapGestureRecognizer) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
             self.spinner.isHidden = false
@@ -84,6 +78,12 @@ class EditMovieViewController: UIViewController, UIImagePickerControllerDelegate
                 self.spinner.isHidden = true
             })
         }
+    }
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        self.movieImage.image = image
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onSave(_ sender: UIButton) {
@@ -129,7 +129,7 @@ class EditMovieViewController: UIViewController, UIImagePickerControllerDelegate
     @IBAction func onDelete(_ sender: UIButton) {
         let alert = UIAlertController(title: "Delete Movie", message: "Are you sure?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.default, handler: { action in
-            self.model.removeItemFromTable(table: "Movie", key: self.movie!.id)
+            self.model.removeItemFromTable(table: "Movies", key: self.movie!.id)
             self.model.removeImage(name: self.movie!.id)
             self.unwined()
         }))
