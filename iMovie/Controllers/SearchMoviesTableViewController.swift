@@ -22,7 +22,7 @@ class SearchMoviesTableViewController: UITableViewController, UISearchBarDelegat
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:MovieRowCell = tableView.dequeueReusableCell(withIdentifier: "movie_row_cell", for: indexPath) as! MovieRowCell
+        let cell:MovieRowCell = tableView.dequeueReusableCell(withIdentifier: "MovieRowCell", for: indexPath) as! MovieRowCell
         
         let content = data[indexPath.row]
         

@@ -84,7 +84,7 @@ class NewMovieViewController: UIViewController, UIImagePickerControllerDelegate,
                                  name:self.NameInput.text!,
                                  description:self.DescriptionInput.text!,
                                  grade: grade,
-                                 genre: self.GradeInput.text!);
+                                 genre: self.GenreInput.text!);
         
         model.saveImageToFirebase(image:self.ImageInput.image!, name: key ,callback: { (url) in
             self.model.addItemToTable(table: "Movies", key: key, value: newMovie.toJson())
