@@ -11,8 +11,8 @@ import UIKit
 class MovieTableViewController: UITableViewController {
     
     var data: [Movie] = []
-    let model: FireBaseModel = FireBaseModel.getInstance()
     let sync:SyncManager = SyncManager.getInstance()
+    var modelFirebase:FireBaseModel = FireBaseModel.getInstance()
     var imageData: [String:UIImage] = [:]
     var selctedRow:Int?
     var movieAddedListener:NSObjectProtocol?
@@ -96,7 +96,7 @@ class MovieTableViewController: UITableViewController {
     public func movieAdded(movie:Movie){
         self.spinner.isHidden = false
         self.spinner.startAnimating()
-        self.model.downloadImage(name: movie.id, callback: {(image) in
+        self.sync.getImage(name: movie.id, callback: {(image) in
             self.imageData[movie.id] = image
             self.data.insert(movie, at: 0)
             self.moviesTable.insertRows(at: [IndexPath(row: 0, section: 0)],
@@ -109,7 +109,8 @@ class MovieTableViewController: UITableViewController {
     func movieChanged(movie:Movie){
         self.spinner.isHidden = false
         self.spinner.startAnimating()
-        self.model.downloadImage(name: movie.id, callback: {(image) in
+        self.sync.removeLocalImage(name: movie.id+".jpeg")
+        self.sync.getImage(name: movie.id, callback: {(image) in
             let index = self.data.index(where: { (curr) -> Bool in
                 return curr.id == movie.id
             })

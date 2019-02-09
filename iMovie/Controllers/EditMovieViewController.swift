@@ -17,6 +17,8 @@ class EditMovieViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var descriptionText: UITextView!
     
     let model: FireBaseModel = FireBaseModel.getInstance()
+    let sync: SyncManager = SyncManager.getInstance()
+    
     var movie:Movie? {
         didSet {
             if let movie = movie {
@@ -118,7 +120,6 @@ class EditMovieViewController: UIViewController, UIImagePickerControllerDelegate
                 strUrl = url!
             }
             else { strUrl = "" }
-            
             let editedMovie: Movie = Movie(id:key,
                                            name:self.movieText.text!,
                                            description:self.descriptionText.text!,

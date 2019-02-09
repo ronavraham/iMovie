@@ -107,13 +107,13 @@ class FireBaseModel {
     
     func saveImageToFirebase(image:UIImage, name:(String),
                              callback:@escaping (String?)->Void){
-        let filesRef = storageRef!.child("images/"+name+".jpg")
+        let movieRef = storageRef!.child("images/"+name+".jpg")
         if let data = image.jpegData(compressionQuality: 0.8) {
-            filesRef.putData(data, metadata: nil) { metadata, error in
+            movieRef.putData(data, metadata: nil) { metadata, error in
                 if (error != nil) {
                     callback(nil)
                 } else {
-                   filesRef.downloadURL { url, error in
+                   movieRef.downloadURL { url, error in
                     guard let downloadURL = url else {
                         // Uh-oh, an error occurred!
                         return
@@ -126,8 +126,8 @@ class FireBaseModel {
     }
     
     func downloadImage(name:String, callback:@escaping (UIImage?)->Void) {
-        let islandRef = storageRef!.child("images/"+name+".jpg")
-        islandRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+        let movieRef = storageRef!.child("images/"+name+".jpg")
+        movieRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
             if (error != nil) {
                 callback(nil)
             } else {
