@@ -24,6 +24,13 @@ class SyncManager {
     func observeMovies(){
         modelFirebase.movieAddedEvent(callback: { (m:Movie?) in
             if let movie:Movie = m{
+                var lastUpdated = Movie.getLastUpdateDate(database: self.localSql.database)
+                lastUpdated += 1;
+                Movie.addNew(database: self.localSql.database, movie: movie)
+                if (movie.lastUpdate != nil && movie.lastUpdate! > lastUpdated){
+                    lastUpdated = movie.lastUpdate!
+                }
+                Movie.setLastUpdateDate(database: self.localSql.database, date: lastUpdated)
                 iMovieNotificationCenter.movieAddedNotification.notify(data: movie)
             }
         });
