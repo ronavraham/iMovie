@@ -16,6 +16,7 @@ class FireBaseModel {
     var storageRef:StorageReference?
     
     static var instance: FireBaseModel = FireBaseModel()
+    let numberOfRecentMovies:UInt = 20
     
     static func getInstance()->FireBaseModel {
         return instance
@@ -59,10 +60,41 @@ class FireBaseModel {
         return self.ref?.child(table).childByAutoId().key
     }
     
+    /*
     func getAllItemsInTable(table:String, callback:@escaping ([String:[String:Any]]?)->Void) {
         self.ref?.child(table).observeSingleEvent(of: .value, with: { (snapshot) in
             callback(snapshot.value as? [String:[String:Any]])
         })
+    }*/
+    
+    func movieAddedEvent(callback:@escaping (Movie?)->Void){
+        self.ref?.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childAdded, with: { (snapshot) in
+            if let value = snapshot.value as? [String:Any] {
+                let movie = Movie(movieJson: value)
+                callback(movie)
+            }
+            else { callback(nil) }
+        });
+    }
+    
+    func movieChangedEvent(callback:@escaping (Movie?)->Void){
+        self.ref?.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childChanged, with: { (snapshot) in
+            if let value = snapshot.value as? [String:Any] {
+                let movie = Movie(movieJson: value)
+                callback(movie)
+            }
+            else { callback(nil) }
+        });
+    }
+    
+    func movieRemovedEvent(callback:@escaping (Movie?)->Void){
+        self.ref?.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childRemoved, with: { (snapshot) in
+            if let value = snapshot.value as? [String:Any] {
+                let movie = Movie(movieJson: value)
+                callback(movie)
+            }
+            else { callback(nil) }
+        });
     }
     
     func addItemToTable(table:String, key:String, value:[String:Any]) {

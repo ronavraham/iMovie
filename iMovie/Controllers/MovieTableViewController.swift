@@ -11,10 +11,13 @@ import UIKit
 class MovieTableViewController: UITableViewController {
     
     var data: [Movie] = []
-    var imageData: [String:UIImage] = [:]
     let model: FireBaseModel = FireBaseModel.getInstance()
-    let numberOfRecentMovies:UInt = 20
+    let sync:SyncManager = SyncManager.getInstance()
+    var imageData: [String:UIImage] = [:]
     var selctedRow:Int?
+    var movieAddedListener:NSObjectProtocol?
+    var movieChangedListener:NSObjectProtocol?
+    var movieRemovedListener:NSObjectProtocol?
     
     @IBOutlet var moviesTable: UITableView!
     @IBOutlet weak var newBarButton: UIBarButtonItem!
@@ -30,6 +33,18 @@ class MovieTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.newBarButton.isEnabled = true
+    }
+    
+    deinit{
+        if movieAddedListener != nil{
+            iMovieNotificationCenter.movieAddedNotification.remove(observer: movieAddedListener!)
+        }
+        if movieRemovedListener != nil{
+            iMovieNotificationCenter.movieRemovedNotification.remove(observer: movieRemovedListener!)
+        }
+        if movieChangedListener != nil{
+            iMovieNotificationCenter.movieChangedNotification.remove(observer: movieChangedListener!)
+        }
     }
 
     // MARK: - Table view data source
@@ -73,63 +88,57 @@ class MovieTableViewController: UITableViewController {
     }
     
     private func addObservers() {
-        model.ref!.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childAdded, with: { (snapshot) in
-            self.spinner.isHidden = false
-            self.spinner.startAnimating()
-            if let value = snapshot.value as? [String:Any] {
-                let movie = Movie(movieJson: value)
-                self.model.downloadImage(name: movie.id, callback: {(image) in
-                    self.imageData[movie.id] = image
-                    self.data.insert(movie, at: 0)
-                    self.moviesTable.insertRows(at: [IndexPath(row: 0, section: 0)],
-                                                with: UITableView.RowAnimation.automatic)
-                    self.spinner.stopAnimating()
-                    self.spinner.isHidden = true
-                })
-            }
-        })
-        
-        model.ref!.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childRemoved, with: { (snapshot) in
-            if let value = snapshot.value as? [String:Any] {
-                let movie = Movie(movieJson: value)
-                if self.imageData.keys.contains(movie.id) {
-                    self.imageData.removeValue(forKey: movie.id)
-                }
-                
-                let index = self.data.index(where: { (curr) -> Bool in
-                    return curr.id == movie.id
-                })
-                
-                if index != nil {
-                    self.data.remove(at: index!)
-                    self.moviesTable.deleteRows(at: [IndexPath(row: index!, section: 0)],
-                                                   with: UITableView.RowAnimation.automatic)
-                }
-            }
-        })
-        
-        model.ref!.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childChanged, with: { (snapshot) in
-            self.spinner.isHidden = false
-            self.spinner.startAnimating()
-            if let value = snapshot.value as? [String:Any] {
-                let movie = Movie(movieJson: value)
-                self.model.downloadImage(name: movie.id, callback: {(image) in
-                    let index = self.data.index(where: { (curr) -> Bool in
-                        return curr.id == movie.id
-                    })
-                    
-                    if index != nil {
-                        self.imageData[movie.id] = image
-                        self.data[index!] = movie
-                        self.moviesTable.reloadRows(at: [IndexPath(row: index!, section: 0)],
-                                                    with: UITableView.RowAnimation.automatic)
-                    }
-                    
-                    self.spinner.stopAnimating()
-                    self.spinner.isHidden = true
-                })
-            }
+        movieAddedListener = iMovieNotificationCenter.movieAddedNotification.observe(cb: movieAdded)
+        movieChangedListener = iMovieNotificationCenter.movieChangedNotification.observe(cb: movieChanged)
+        movieRemovedListener = iMovieNotificationCenter.movieRemovedNotification.observe(cb: movieRemoved)
+    }
+    
+    public func movieAdded(movie:Movie){
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
+        self.model.downloadImage(name: movie.id, callback: {(image) in
+            self.imageData[movie.id] = image
+            self.data.insert(movie, at: 0)
+            self.moviesTable.insertRows(at: [IndexPath(row: 0, section: 0)],
+                                        with: UITableView.RowAnimation.automatic)
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
         })
     }
-
+    
+    func movieChanged(movie:Movie){
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
+        self.model.downloadImage(name: movie.id, callback: {(image) in
+            let index = self.data.index(where: { (curr) -> Bool in
+                return curr.id == movie.id
+            })
+            
+            if index != nil {
+                self.imageData[movie.id] = image
+                self.data[index!] = movie
+                self.moviesTable.reloadRows(at: [IndexPath(row: index!, section: 0)],
+                                            with: UITableView.RowAnimation.automatic)
+            }
+            
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
+        })
+    }
+    
+    func movieRemoved(movie:Movie){
+        if self.imageData.keys.contains(movie.id) {
+            self.imageData.removeValue(forKey: movie.id)
+        }
+        
+        let index = self.data.index(where: { (curr) -> Bool in
+            return curr.id == movie.id
+        })
+        
+        if index != nil {
+            self.data.remove(at: index!)
+            self.moviesTable.deleteRows(at: [IndexPath(row: index!, section: 0)],
+                                        with: UITableView.RowAnimation.automatic)
+        }
+    }
 }

@@ -13,6 +13,8 @@
 		841007DE220E1B4800541C9C /* LastUpdateDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007DD220E1B4800541C9C /* LastUpdateDates.swift */; };
 		841007E1220E1D9D00541C9C /* MovieSQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007E0220E1D9D00541C9C /* MovieSQL.swift */; };
 		841007E5220E213100541C9C /* LocalSQLManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007E4220E213100541C9C /* LocalSQLManager.swift */; };
+		841007E7220EBFB100541C9C /* iMovieNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007E6220EBFB100541C9C /* iMovieNotificationCenter.swift */; };
+		841007E9220EC0A500541C9C /* SyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841007E8220EC0A500541C9C /* SyncManager.swift */; };
 		841090C321BC1F4F009AED9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090C221BC1F4F009AED9E /* AppDelegate.swift */; };
 		841090C521BC1F4F009AED9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841090C421BC1F4F009AED9E /* ViewController.swift */; };
 		841090CA21BC1F51009AED9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841090C921BC1F51009AED9E /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		841007DF220E1C4B00541C9C /* iMovie-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iMovie-Bridging-Header.h"; sourceTree = "<group>"; };
 		841007E0220E1D9D00541C9C /* MovieSQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSQL.swift; sourceTree = "<group>"; };
 		841007E4220E213100541C9C /* LocalSQLManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSQLManager.swift; sourceTree = "<group>"; };
+		841007E6220EBFB100541C9C /* iMovieNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMovieNotificationCenter.swift; sourceTree = "<group>"; };
+		841007E8220EC0A500541C9C /* SyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncManager.swift; sourceTree = "<group>"; };
 		841090BF21BC1F4F009AED9E /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841090C221BC1F4F009AED9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841090C421BC1F4F009AED9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 			children = (
 				84FAF62A21FC679F0051C565 /* FireBaseManager.swift */,
 				841007E4220E213100541C9C /* LocalSQLManager.swift */,
+				841007E6220EBFB100541C9C /* iMovieNotificationCenter.swift */,
+				841007E8220EC0A500541C9C /* SyncManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -431,9 +437,11 @@
 				841090C321BC1F4F009AED9E /* AppDelegate.swift in Sources */,
 				84AEA46621FCBFAC0014ED98 /* Movie.swift in Sources */,
 				840B625F2205B2B300F0A156 /* NewMovieViewController.swift in Sources */,
+				841007E7220EBFB100541C9C /* iMovieNotificationCenter.swift in Sources */,
 				84E16582220DAF0800B83EC0 /* EditMovieViewController.swift in Sources */,
 				841007E1220E1D9D00541C9C /* MovieSQL.swift in Sources */,
 				84FAF62B21FC679F0051C565 /* FireBaseManager.swift in Sources */,
+				841007E9220EC0A500541C9C /* SyncManager.swift in Sources */,
 				841007DE220E1B4800541C9C /* LastUpdateDates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
