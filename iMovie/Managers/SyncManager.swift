@@ -87,24 +87,9 @@ class SyncManager {
         return UIImage(contentsOfFile:filename.path)
     }
 
-    
-        /*
-    
-    func addNewStudent(student:Student){
-        modelFirebase.addNewStudent(student: student);
-        //Student.addNew(database: modelSql!.database, student: student)
+    func addNewMovie(movie:Movie){
+        modelFirebase.addItemToTable(table: "Movies", key: movie.id, value: movie.toJson());
+        Movie.addNew(database: localSql.database, movie: movie)
     }
-    
-    func getStudent(byId:String)->Student?{
-        return modelFirebase.getStudent(byId:byId)
-        //return Student.get(database: modelSql!.database, byId: byId);
-    }
-    
-    func saveImage(image:UIImage, name:(String),callback:@escaping (String?)->Void){
-        modelFirebase.saveImage(image: image, name: name, callback: callback)
-        
-    }
-    
- */
 }
 

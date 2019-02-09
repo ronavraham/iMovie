@@ -17,6 +17,7 @@ class NewMovieViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     let model: FireBaseModel = FireBaseModel.getInstance()
+    let sync:SyncManager = SyncManager.getInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +92,7 @@ class NewMovieViewController: UIViewController, UIImagePickerControllerDelegate,
                                         grade: grade,
                                         genre: self.GenreInput.text!,
                                         url:strUrl);
-            self.model.addItemToTable(table: "Movies", key: key, value: newMovie.toJson())
+            self.sync.addNewMovie(movie: newMovie)
             self.spinner.stopAnimating()
             self.spinner.isHidden = true
             self.performSegue(withIdentifier: "unwindFromNewMovie", sender: self)
