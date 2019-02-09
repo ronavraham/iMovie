@@ -127,7 +127,7 @@ class EditMovieViewController: UIViewController, UIImagePickerControllerDelegate
                                            genre: self.genreText.text!,
                                            url:strUrl);
             
-            self.model.addItemToTable(table: "Movies", key: key, value: editedMovie.toJson())
+            self.model.updateItem(table: "Movies", key: key, value: editedMovie.toJson())
             self.spinner.stopAnimating()
             self.spinner.isHidden = true
             

@@ -96,7 +96,7 @@ class MovieTableViewController: UITableViewController {
     }
     
     public func movieAdded(movie:Movie){
-        self.sync.getImage(name: movie.id, callback: {(image) in
+        self.sync.getImage(url: movie.imageUrl, callback: {(image) in
             self.imageData[movie.id] = image
             self.data.insert(movie, at: 0)
             self.moviesTable.insertRows(at: [IndexPath(row: 0, section: 0)],
@@ -109,8 +109,7 @@ class MovieTableViewController: UITableViewController {
     func movieChanged(movie:Movie){
         self.spinner.isHidden = false
         self.spinner.startAnimating()
-        self.sync.removeLocalImage(name: movie.id+".jpeg")
-        self.sync.getImage(name: movie.id, callback: {(image) in
+        self.sync.getImage(url: movie.imageUrl, callback: {(image) in
             let index = self.data.index(where: { (curr) -> Bool in
                 return curr.id == movie.id
             })
@@ -128,7 +127,6 @@ class MovieTableViewController: UITableViewController {
     }
     
     func movieRemoved(movie:Movie){
-        self.sync.removeLocalImage(name: movie.id+".jpeg")
         if self.imageData.keys.contains(movie.id) {
             self.imageData.removeValue(forKey: movie.id)
         }

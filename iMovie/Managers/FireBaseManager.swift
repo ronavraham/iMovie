@@ -101,6 +101,10 @@ class FireBaseModel {
         self.ref?.child(table).child(key).setValue(value)
     }
     
+    func updateItem(table:String, key:String, value:[String:Any]) {
+        self.ref?.child(table).child(key).updateChildValues(value);
+    }
+    
     func removeItemFromTable(table:String, key:String) {
         self.ref?.child(table).child(key).removeValue()
     }
@@ -125,10 +129,11 @@ class FireBaseModel {
         }
     }
     
-    func downloadImage(name:String, callback:@escaping (UIImage?)->Void) {
-        let movieRef = storageRef!.child("images/"+name+".jpg")
+    func downloadImage(url:String, callback:@escaping (UIImage?)->Void) {
+        let movieRef = Storage.storage().reference(forURL: url)
         movieRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
             if (error != nil) {
+                print(error)
                 callback(nil)
             } else {
                 

@@ -12,6 +12,7 @@ class SearchMoviesTableViewController: UITableViewController, UISearchBarDelegat
     var data: [Movie] = []
     var imageData: [String:UIImage] = [:]
     let model: FireBaseModel = FireBaseModel.getInstance()
+    let sync:SyncManager = SyncManager.getInstance()
     
     @IBOutlet var searchTable: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -86,7 +87,7 @@ class SearchMoviesTableViewController: UITableViewController, UISearchBarDelegat
                                 let movie = Movie(movieJson: stJson.value)
                                 
                                 if movie.name.contains(self.searchBar.text!) {
-                                    self.model.downloadImage(name: movie.id, callback: {(image) in
+                                    self.sync.getImage(url: movie.imageUrl, callback: {(image) in
                                         self.imageData[movie.id] = image
                                         self.data.insert(movie, at: 0)
                                         self.searchTable.insertRows(at: [IndexPath(row: 0, section: 0)],

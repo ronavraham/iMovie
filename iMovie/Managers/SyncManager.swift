@@ -50,13 +50,13 @@ class SyncManager {
         });
     }
     
-    func getImage(name:String, callback:@escaping (UIImage?)->Void){
-        if let image = self.getImageFromFile(name: name+".jpeg"){
+    func getImage(url:String, callback:@escaping (UIImage?)->Void){
+        if let image = self.getImageFromFile(name: url){
             callback(image)
         }else{
-            modelFirebase.downloadImage(name: name ,callback: {(image) in
+            modelFirebase.downloadImage(url: url ,callback: {(image) in
                 if (image != nil){
-                    self.saveImageToFile(image: image!, name: name+".jpeg")
+                    self.saveImageToFile(image: image!, name: url)
                 }
                 callback(image)
             });
