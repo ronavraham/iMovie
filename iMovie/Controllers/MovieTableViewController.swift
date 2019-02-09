@@ -88,14 +88,14 @@ class MovieTableViewController: UITableViewController {
     }
     
     private func addObservers() {
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
         movieAddedListener = iMovieNotificationCenter.movieAddedNotification.observe(cb: movieAdded)
         movieChangedListener = iMovieNotificationCenter.movieChangedNotification.observe(cb: movieChanged)
         movieRemovedListener = iMovieNotificationCenter.movieRemovedNotification.observe(cb: movieRemoved)
     }
     
     public func movieAdded(movie:Movie){
-        self.spinner.isHidden = false
-        self.spinner.startAnimating()
         self.sync.getImage(name: movie.id, callback: {(image) in
             self.imageData[movie.id] = image
             self.data.insert(movie, at: 0)

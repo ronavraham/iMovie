@@ -801,9 +801,8 @@
                                     <action selector="onAddComment:" destination="zME-M9-Wg4" eventType="touchUpInside" id="PXO-ZC-k6J"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsP-Hu-alF">
-                                <rect key="frame" x="0.0" y="380" width="113.5" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsP-Hu-alF">
+                                <rect key="frame" x="7" y="380" width="113.5" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <color key="textColor" red="0.37740138699999998" green="0.13904293009999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -820,6 +819,7 @@
                             <constraint firstItem="tNz-Fx-Vt5" firstAttribute="leading" secondItem="7oU-Il-pey" secondAttribute="trailing" id="EKE-2U-4ot"/>
                             <constraint firstItem="tVK-QS-GJk" firstAttribute="top" secondItem="WEa-4N-Zme" secondAttribute="top" constant="12" id="HuR-Ev-E88"/>
                             <constraint firstItem="VIf-1w-HUA" firstAttribute="top" secondItem="tVK-QS-GJk" secondAttribute="bottom" constant="20" id="I0n-Hj-qGd"/>
+                            <constraint firstItem="wsP-Hu-alF" firstAttribute="top" secondItem="Q9H-fF-SK7" secondAttribute="bottom" constant="8" id="Niq-uw-abr"/>
                             <constraint firstItem="t7q-oI-EIb" firstAttribute="leading" secondItem="tNz-Fx-Vt5" secondAttribute="trailing" constant="4" id="OjX-Qi-XTw"/>
                             <constraint firstItem="WEa-4N-Zme" firstAttribute="trailing" secondItem="VIf-1w-HUA" secondAttribute="trailing" constant="109" id="U0K-2y-pdS"/>
                             <constraint firstItem="H2a-Fr-HE1" firstAttribute="bottom" secondItem="WEa-4N-Zme" secondAttribute="bottom" id="WOC-5S-Rtb"/>
@@ -835,6 +835,7 @@
                             <constraint firstItem="t7q-oI-EIb" firstAttribute="top" secondItem="WEa-4N-Zme" secondAttribute="top" constant="31" id="qK0-VH-NRl"/>
                             <constraint firstItem="H2a-Fr-HE1" firstAttribute="leading" secondItem="WEa-4N-Zme" secondAttribute="leading" constant="138" id="r0O-Ip-Nht"/>
                             <constraint firstItem="t7q-oI-EIb" firstAttribute="leading" secondItem="tNz-Fx-Vt5" secondAttribute="trailing" constant="4" id="rk0-Sp-gEK"/>
+                            <constraint firstItem="wsP-Hu-alF" firstAttribute="leading" secondItem="WEa-4N-Zme" secondAttribute="leading" constant="7" id="uYO-uD-RBg"/>
                             <constraint firstItem="WEa-4N-Zme" firstAttribute="trailing" secondItem="jrl-ed-Ijy" secondAttribute="trailing" constant="312" id="w0f-ME-EDN"/>
                             <constraint firstItem="jrl-ed-Ijy" firstAttribute="top" secondItem="WEa-4N-Zme" secondAttribute="top" constant="52" id="wX3-vz-kwm"/>
                         </constraints>
