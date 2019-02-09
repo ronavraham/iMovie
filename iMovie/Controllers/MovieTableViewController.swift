@@ -128,6 +128,7 @@ class MovieTableViewController: UITableViewController {
     }
     
     func movieRemoved(movie:Movie){
+        self.sync.removeLocalImage(name: movie.id+".jpeg")
         if self.imageData.keys.contains(movie.id) {
             self.imageData.removeValue(forKey: movie.id)
         }
