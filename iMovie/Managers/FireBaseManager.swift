@@ -69,6 +69,7 @@ class FireBaseModel {
     
     func movieAddedEvent(callback:@escaping (Movie?)->Void){
         self.ref?.child("Movies").queryLimited(toLast: numberOfRecentMovies).observe(.childAdded, with: { (snapshot) in
+            iMovieNotificationCenter.activateSpinnerNotification.notify(data: true);
             if let value = snapshot.value as? [String:Any] {
                 let movie = Movie(movieJson: value)
                 callback(movie)

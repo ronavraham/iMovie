@@ -205,10 +205,10 @@
 			isa = PBXGroup;
 			children = (
 				84AEA46921FCC13F0014ED98 /* MovieTableViewController.swift */,
+				84E16583220DBA5100B83EC0 /* SearchMoviesTableViewController.swift */,
 				840B625E2205B2B300F0A156 /* NewMovieViewController.swift */,
 				840B62602205F2F300F0A156 /* MovieDetailsViewController.swift */,
 				84E16581220DAF0800B83EC0 /* EditMovieViewController.swift */,
-				84E16583220DBA5100B83EC0 /* SearchMoviesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

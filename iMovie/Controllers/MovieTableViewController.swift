@@ -18,6 +18,7 @@ class MovieTableViewController: UITableViewController {
     var movieAddedListener:NSObjectProtocol?
     var movieChangedListener:NSObjectProtocol?
     var movieRemovedListener:NSObjectProtocol?
+    var activateSpinnerListener:NSObjectProtocol?
     
     @IBOutlet var moviesTable: UITableView!
     @IBOutlet weak var newBarButton: UIBarButtonItem!
@@ -44,6 +45,9 @@ class MovieTableViewController: UITableViewController {
         }
         if movieChangedListener != nil{
             iMovieNotificationCenter.movieChangedNotification.remove(observer: movieChangedListener!)
+        }
+        if activateSpinnerListener != nil{
+            iMovieNotificationCenter.activateSpinnerNotification.remove(observer: activateSpinnerListener!)
         }
     }
 
@@ -88,14 +92,15 @@ class MovieTableViewController: UITableViewController {
     }
     
     private func addObservers() {
-        self.spinner.isHidden = false
-        self.spinner.startAnimating()
+        activateSpinnerListener = iMovieNotificationCenter.activateSpinnerNotification.observe(cb: activateSpinner)
         movieAddedListener = iMovieNotificationCenter.movieAddedNotification.observe(cb: movieAdded)
         movieChangedListener = iMovieNotificationCenter.movieChangedNotification.observe(cb: movieChanged)
         movieRemovedListener = iMovieNotificationCenter.movieRemovedNotification.observe(cb: movieRemoved)
     }
     
     public func movieAdded(movie:Movie){
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
         self.sync.getImage(url: movie.imageUrl, callback: {(image) in
             self.imageData[movie.id] = image
             self.data.insert(movie, at: 0)
@@ -107,8 +112,6 @@ class MovieTableViewController: UITableViewController {
     }
     
     func movieChanged(movie:Movie){
-        self.spinner.isHidden = false
-        self.spinner.startAnimating()
         self.sync.getImage(url: movie.imageUrl, callback: {(image) in
             let index = self.data.index(where: { (curr) -> Bool in
                 return curr.id == movie.id
@@ -140,5 +143,10 @@ class MovieTableViewController: UITableViewController {
             self.moviesTable.deleteRows(at: [IndexPath(row: index!, section: 0)],
                                         with: UITableView.RowAnimation.automatic)
         }
+    }
+    
+    func activateSpinner(flag:Bool){
+        self.spinner.isHidden = false
+        self.spinner.startAnimating()
     }
 }

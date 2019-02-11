@@ -9,6 +9,7 @@
 import Foundation
 
 class iMovieNotificationCenter{
+    static let activateSpinnerNotification = MyNotification<Bool>("ron.activateSpinner")
     static let movieAddedNotification = MyNotification<Movie>("ron.movieadded")
     static let movieChangedNotification = MyNotification<Movie>("ron.moviechanged")
     static let movieRemovedNotification = MyNotification<Movie>("ron.movieremoved")
