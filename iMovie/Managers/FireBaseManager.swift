@@ -134,7 +134,6 @@ class FireBaseModel {
         let movieRef = Storage.storage().reference(forURL: url)
         movieRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
             if (error != nil) {
-                print(error)
                 callback(nil)
             } else {
                 
